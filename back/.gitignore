@@ -1,0 +1,23 @@
+# Directorios de Node.js
+node_modules/
+.cache/
+.tmp/
+
+# Archivos de registro
+logs/
+*.log
+
+# Archivos de entorno
+.env
+
+# Archivos de prueba
+test/
+*.spec.js
+
+# Directorios específicos
+dist/
+coverage/
+
+# Archivos temporales
+npm-debug.log
+yarn-lock.json
