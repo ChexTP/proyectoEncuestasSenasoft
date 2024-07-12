@@ -9,6 +9,8 @@ export const rolRequired = (role) => {
             return res.status(403).json({ message: "Forbidden: You don't have the right role" });
         }
 
+        req.user=user
+
         next();
     };
 };
