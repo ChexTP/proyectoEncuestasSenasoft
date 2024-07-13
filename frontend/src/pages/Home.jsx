@@ -1,17 +1,25 @@
-import { useContext } from "react";
+import { useContext, Suspense, lazy } from "react";
 
 import { AuthContext } from "../context/Auth.context.jsx";
 
+const DashboardLayout = lazy(() => import("../layouts/Dashboard.layout.jsx"));
+const Loader = lazy(() => import("../components/Loader/Loader.jsx"));
+
 const Home = () => {
 
-    const { user } = useContext(AuthContext);
+    document.title = "Home - Encuestas Senasoft";
 
+    const { user } = useContext(AuthContext);
     console.log(user);
 
     return (
-        <div>
-            <h1>Home page</h1>
-        </div>
+        <Suspense fallback={<Loader/>}>
+            <DashboardLayout
+                user={{ fullName: `${user.firstName} ${user.lastName}`}}
+            >
+                <h1>Hola mundo</h1>
+            </DashboardLayout>
+        </Suspense>
     );
 }
 
