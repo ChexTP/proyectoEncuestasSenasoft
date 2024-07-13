@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { toast, ToastContainer } from "react-toastify"
+import { toast, ToastContainer } from "react-toastify";
 
 import { AuthContext } from "../context/Auth.context.jsx";
 
@@ -33,7 +33,7 @@ const FormLogin = () => {
     })
     
     return (
-        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <ToastContainer/>
             <form
                 onSubmit={handleLogin}
