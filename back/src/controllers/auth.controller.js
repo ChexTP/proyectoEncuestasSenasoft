@@ -1,6 +1,11 @@
 import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
 import {createAccesToken} from '../lib/jwt.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const TOKEN_SECRET = process.env.TOKEN_SECRET
 
 export const register = async (req,res)=> {
 
@@ -160,4 +165,42 @@ export const logout =(req,res)=>{
         expires: new Date(0),
     })
     return res.sendStatus(200)
-}
+}   
+
+export const verifyToken = async (req, res) => {
+    const { token } = req.cookies;
+    if (!token) return res.send(false);
+  
+    jwt.verify(token, TOKEN_SECRET, async (error, user) => {
+      if (error) return res.sendStatus(401);
+  
+      const userFound = await User.findById(user.id);
+      if (!userFound) return res.sendStatus(401);
+  
+      return res.json({
+        id:userFound._id,
+        documentType:userFound.documentType,
+        documentNumber:userFound.documentNumber,
+        firstName:userFound.firstName,
+        lastName:userFound.lastName,
+        gender:userFound.gender,
+        mobilePhone:userFound.mobilePhone,
+        phone:userFound.phone,
+        email:userFound.email,
+        municipality:userFound.municipality,
+        address:userFound.address,
+        neighborhood:userFound.neighborhood,
+        birthDate:userFound.birthDate,
+        ethnicity:userFound.ethnicity,
+        disability:userFound.disability,
+        socioeconomicStratum:userFound.socioeconomicStratum,
+        educationLevel:userFound.educationLevel,
+        deviceAcces:userFound.deviceAcces,
+        devices:userFound.devices,
+        connectivityInternet:userFound.connectivityInternet,
+        healthRegime:userFound.healthRegime,
+        role:userFound.role,
+      });
+    });
+  };
+  

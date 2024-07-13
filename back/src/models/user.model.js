@@ -115,6 +115,11 @@ const userSchema = new mongoose.Schema({
         type: String, 
         enum: ["admin", "ciudadano"], 
         required: true },
+    
+    survey:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Survey'
+    }]
 });
 
 export default mongoose.model('User',userSchema)
