@@ -2,6 +2,7 @@ import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
 import {createAccesToken} from '../lib/jwt.js'
 import dotenv from 'dotenv'
+import jwt from "jsonwebtoken"
 
 dotenv.config()
 
