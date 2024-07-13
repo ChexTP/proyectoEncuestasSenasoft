@@ -10,6 +10,7 @@ export const addTopic = async (req,res)=>{
     try {
         //verificar que la encuesta existe
         const surveyFound= await Survey.findById(surveyId)
+        
         if(!surveyFound) return res.status(404).json({message:'Survey not found'})
         
         //crear el nuevo tema
