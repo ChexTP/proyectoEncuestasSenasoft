@@ -22,3 +22,14 @@
     "password":"test1",
     "role":"admin"
 }
+
+{
+  "titulo": "Encuesta de satisfacción al cliente",
+  "descripcion": "Valoramos su opinión. Por favor, comparta su experiencia con nuestros productos.",
+  "fechaInicio": "2024-07-15",
+  "fechaFin": "2024-07-31",
+  "genero": "Hombre",
+  "edad": 30,
+  "usuario": "668fdf8f66a45778d5ab603e",
+  "imagen": "https://w7.pngwing.com/pngs/670/660/png-transparent-businessperson-cartoon-cliente-cartoon-business-conversation-thumbnail.png" // Reemplazar con una URL de imagen válida
+}
