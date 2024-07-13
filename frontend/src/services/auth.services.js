@@ -2,7 +2,7 @@ import axios from "./axios";
 
 export const verifyToken = async() => {
     try {
-        const user = await axios.get('/verify-token');
+        const user = await axios.get('/verifyToken');
         return user;
     } catch (error) {
         console.log(error);

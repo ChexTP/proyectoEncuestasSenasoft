@@ -3,7 +3,6 @@ import { Suspense, lazy } from "react";
 const Loader = lazy(() => import("../components/Loader/Loader.jsx"));
 const FormLogin = lazy(() => import("../components/FormLogin.jsx"));
 
-
 const Login = () => {
 
     document.title = "Ingresar - Encuestas Senasoft";
