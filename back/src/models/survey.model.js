@@ -9,7 +9,7 @@ const surveySchema = new mongoose.Schema({
     },
 
     description:{
-        type:Text,
+        type:String,
         required:true,
     },
 
@@ -39,6 +39,7 @@ const surveySchema = new mongoose.Schema({
         ref:'User',
         required:true,
     }
+    
 
 })
 
