@@ -36,3 +36,15 @@ export const addSurvey = async (req,res) =>{
     }
 
 }
+
+export const getAllSurveys = async(req, res) => {
+    try {
+        
+        const surveys = await Survey.find({});
+        res.status(201).json(surveys);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'An error occurred created the surveys', error: error.message });
+    }
+}
