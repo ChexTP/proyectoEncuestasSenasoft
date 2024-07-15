@@ -5,12 +5,12 @@ const Sidebar = lazy(() => import("../components/Sidebar.jsx"));
 const DashboardNavBar = lazy(() => import("../components/DashboardNavBar.jsx"));
 
 
-const DashboardLayout = ({children, user}) => {
+const DashboardLayout = ({children}) => {
     return (
         <Suspense fallback={<Loader/>}>
             <div className="bg-gray-700 text-white h-screen">
-                <DashboardNavBar username={user.fullName}/>
-                <div className="flex">
+                <DashboardNavBar/>
+                <div className="flex h-[80vh]">
                     <Sidebar/>
                     <main className="p-10">
                         { children }

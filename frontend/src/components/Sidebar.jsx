@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faSquarePollVertical, faChartPie, faCertificate, faPenToSquare, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faSquarePollVertical, faChartPie, faCertificate, faPenToSquare, faRightFromBracket, faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 
 import { logout } from '../services/auth.services.js';
 import { AuthContext } from '../context/Auth.context';
@@ -9,11 +9,12 @@ import { AuthContext } from '../context/Auth.context';
 const Sidebar = () => {
 
     const menuItems = [
-        { title: "Inicio", icon: faHouse, route: "" },
-        { title: "Encuestas", icon: faSquarePollVertical, route: "" },
-        { title: "Temas", icon: faPenToSquare, route: "" },
-        { title: "Estadisticas", icon: faChartPie, route: "" },
-        { title: "Certificados", icon: faCertificate, route: "" },
+        { title: "Inicio", icon: faHouse, route: "/" },
+        { title: "Encuestas", icon: faSquarePollVertical, route: "/surveys" },
+        { title: "Preguntas", icon: faCircleQuestion, route: "/questions" },
+        { title: "Temas", icon: faPenToSquare, route: "/topics" },
+        { title: "Estadisticas", icon: faChartPie, route: "/charts" },
+        { title: "Certificados", icon: faCertificate, route: "/certificates" },
     ]
 
     // cerrar sesion
