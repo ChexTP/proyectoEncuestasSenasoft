@@ -1,5 +1,5 @@
 import Topic from '../models/topic.model.js'
-import Survey from '../models/survey.model.js'
+import surveys from '../models/survey.model.js'
 
 
 export const addTopic = async (req,res)=>{
@@ -7,7 +7,7 @@ export const addTopic = async (req,res)=>{
     //recibir id de la encuesta a asociar el tema y el tema a asociar
     const {
         topicTitle,
-        idSurvey=[]
+        idSurvey
     } = req.body
 
     try {
