@@ -7,11 +7,6 @@ const topicSchema = new mongoose.Schema({
         required:true
     },
 
-    survey:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Survey',
-        required:true
-    }
 
 })
 

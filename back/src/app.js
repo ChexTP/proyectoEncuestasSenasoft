@@ -9,6 +9,8 @@ import { dirname} from 'path';
 import authRoutes from './routes/auth.routes.js'
 import topicRoutes from './routes/topic.routes.js'
 import surveyRoutes from './routes/survey.routes.js'
+import questionRoutes from './routes/question.routes.js'
+import answerRoutes from './routes/answer.routes.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,5 +29,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use("/api", authRoutes);
 app.use("/api/topic",topicRoutes)
 app.use("/api/survey",surveyRoutes)
+app.use("/api/question",questionRoutes)
+app.use("/api/answer",answerRoutes)
 
 export default app

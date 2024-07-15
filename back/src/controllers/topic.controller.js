@@ -5,18 +5,18 @@ import Survey from '../models/survey.model.js'
 export const addTopic = async (req,res)=>{
 
     //recibir id de la encuesta a asociar el tema y el tema a asociar
-    const {surveyId,topicTitle} = req.body
+    const {topicTitle} = req.body
 
     try {
-        //verificar que la encuesta existe
-        const surveyFound= await Survey.findById(surveyId)
+        // //verificar que la encuesta existe
+        // const surveyFound= await Survey.findById(surveyId)
         
-        if(!surveyFound) return res.status(404).json({message:'Survey not found'})
+        // if(!surveyFound) return res.status(404).json({message:'Survey not found'})
         
         //crear el nuevo tema
         const newTopic = new Topic({
             topicTitle,
-            survey:surveyFound._id,
+            // survey:surveyFound._id,
         })
         
         //guardar el nuevo tema 

@@ -11,6 +11,8 @@ export const addSurvey = async (req,res) =>{
         gender,
         age,
         userId,
+        topic=[],
+        question=[]
         
     }=req.body
 
@@ -25,7 +27,9 @@ export const addSurvey = async (req,res) =>{
             gender,
             age,
             user:userId,
-            image
+            image,
+            topic,
+            question
         })
     
         await newSurvey.save()
@@ -40,7 +44,14 @@ export const addSurvey = async (req,res) =>{
 export const getAllSurveys = async(req, res) => {
     try {
         
-        const surveys = await Survey.find({});
+        const surveys = await Survey.find({})
+            .populate('topic')
+            .populate({
+            path: 'question',
+            populate: {
+                path: 'answer'
+                }
+            });
         res.status(201).json(surveys);
 
     } catch (error) {
