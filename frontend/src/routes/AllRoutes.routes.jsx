@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 const ProtectedRoutes = lazy(() => import("../routes/Protected.routes.jsx"));
@@ -8,7 +8,9 @@ const Register = lazy(()=> import("../pages/Register.jsx"));
 const Loader = lazy(() => import("../components/Loader/Loader.jsx"));
 const Home = lazy(()=> import("../pages/Home.jsx"));
 const Surveys = lazy(()=> import("../pages/Surveys.jsx"));
+const Topics = lazy(()=> import("../pages/Topics.jsx"));
 
+import SurveysContextProvider from "../context/Surveys.context.jsx";
 
 const AllRoutes = () => {
     return (
@@ -16,7 +18,12 @@ const AllRoutes = () => {
             <Routes>
                 <Route element={<ProtectedRoutes/>}>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/surveys" element={<Surveys/>}/>
+                    <Route path="/surveys" element={
+                        <SurveysContextProvider>
+                            <Surveys/>
+                        </SurveysContextProvider>
+                    }/>
+                    <Route path="/topics" element={<Topics/>}/>
                 </Route>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>

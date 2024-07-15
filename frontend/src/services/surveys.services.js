@@ -10,3 +10,12 @@ export const getAllSurveys = async() => {
         console.log(error);
     }
 }
+
+export const addSurvey = async(survey) => {
+    try {
+        const surveyRes = await axios.post();
+        return surveyRes;
+    } catch (error) {
+        console.log(error);
+    }
+}

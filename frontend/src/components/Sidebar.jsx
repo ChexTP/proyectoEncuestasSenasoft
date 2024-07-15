@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faSquarePollVertical, faChartPie, faCertificate, faPenToSquare, faRightFromBracket, faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faSquarePollVertical, faChartPie, faCertificate, faPenToSquare, faRightFromBracket, faCircleQuestion, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 import { logout } from '../services/auth.services.js';
 import { AuthContext } from '../context/Auth.context';
@@ -10,11 +10,12 @@ const Sidebar = () => {
 
     const menuItems = [
         { title: "Inicio", icon: faHouse, route: "/" },
+        { title: "Temas", icon: faPenToSquare, route: "/topics" },
         { title: "Encuestas", icon: faSquarePollVertical, route: "/surveys" },
         { title: "Preguntas", icon: faCircleQuestion, route: "/questions" },
-        { title: "Temas", icon: faPenToSquare, route: "/topics" },
         { title: "Estadisticas", icon: faChartPie, route: "/charts" },
         { title: "Certificados", icon: faCertificate, route: "/certificates" },
+        { title: "Usuarios", icon: faUsers, route: "/users" },
     ]
 
     // cerrar sesion
@@ -45,7 +46,7 @@ const Sidebar = () => {
                     }
                     <li onClick={handleLogout}>
                         <div className="group cursor-pointer flex items-center transition-all p-2 rounded-lg text-gray-500 hover:bg-red-500">
-                            <FontAwesomeIcon className='text-gray-500 text-xl group-hover:text-white' icon={faPenToSquare}/>
+                            <FontAwesomeIcon className='text-gray-500 text-xl group-hover:text-white' icon={faRightFromBracket}/>
                             <span className="ms-3 text-xl group-hover:text-white">Cerrar Sesión</span>
                         </div>
                     </li>

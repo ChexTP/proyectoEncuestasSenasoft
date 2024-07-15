@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import flowvite from "flowbite-react/tailwind"
+
 export default {
   content: [
     "./index.html",
@@ -16,6 +18,7 @@ export default {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    flowvite.plugin('flowbite/plugin'),
+    // require('flowbite/plugin')
   ],
 }
