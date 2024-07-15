@@ -43,7 +43,19 @@ const surveySchema = new mongoose.Schema({
     image:{
         type:String,
         required:true,
-    }
+    },
+
+    topic:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Topic'
+    }],
+
+    question:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Question'
+    }]
+
+    
     
 
 })

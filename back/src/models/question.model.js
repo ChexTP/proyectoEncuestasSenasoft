@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const questionSchema = new mongoose.Schema({
 
     questionText:{
-        type:Text,
+        type:String,
         required:true
     },
 
@@ -11,6 +11,12 @@ const questionSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Survey',
         required:true
+    },
+
+    answer:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Answer',
+        default:""
     }
 
 })

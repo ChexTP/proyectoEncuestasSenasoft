@@ -1,10 +1,10 @@
 import {Router} from 'express'
-import {addTopic} from '../controllers/topic.controller.js' 
+import {createAnswer} from '../controllers/answer.controller.js'
 import {authRequired} from '../middlewares/validateToken.js'
 import {rolRequired} from '../middlewares/validateRol.js'
 
 const router = Router()
 
-router.post('/addTopic',addTopic)
+router.post('/createAnswer',createAnswer)
 
 export default router

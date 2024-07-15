@@ -3,7 +3,13 @@ import mongoose from 'mongoose'
 const answerSchema = new mongoose.Schema({
 
     answer:{
-        type:Text,
+        type:String,
+        required:true
+    },
+
+    question:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Question',
         required:true
     },
 
@@ -13,11 +19,6 @@ const answerSchema = new mongoose.Schema({
         required:true,
     },
 
-    question:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Question',
-        required: true
-    }
 
 })
 
