@@ -5,6 +5,6 @@ import {rolRequired} from '../middlewares/validateRol.js'
 
 const router = Router()
 
-router.post('/createAnswer',createAnswer)
+router.post('/createAnswer',authRequired,rolRequired("admin"),createAnswer)
 
 export default router

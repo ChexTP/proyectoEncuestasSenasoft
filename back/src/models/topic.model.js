@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import surveyModel from './survey.model'
 
 const topicSchema = new mongoose.Schema({
 
@@ -6,6 +7,12 @@ const topicSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+
+    survey:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Survey',
+    
+    }
 
 
 })

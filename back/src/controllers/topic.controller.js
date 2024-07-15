@@ -5,7 +5,10 @@ import Survey from '../models/survey.model.js'
 export const addTopic = async (req,res)=>{
 
     //recibir id de la encuesta a asociar el tema y el tema a asociar
-    const {topicTitle} = req.body
+    const {
+        topicTitle,
+        idSurvey=[]
+    } = req.body
 
     try {
         // //verificar que la encuesta existe
@@ -16,6 +19,7 @@ export const addTopic = async (req,res)=>{
         //crear el nuevo tema
         const newTopic = new Topic({
             topicTitle,
+            survey:idSurvey
             // survey:surveyFound._id,
         })
         
@@ -30,5 +34,25 @@ export const addTopic = async (req,res)=>{
         
     }
 
+
+}
+
+export const getTopicBySurvey = async (req,res)=>{
+
+    const {surveyId}=req.body
+
+    try {
+        
+        const topics= await Topic.find({survey:surveyId})
+
+        if (!topics.length) {
+            return res.status(404).json({ message: 'No topics found for this survey' });
+        }
+
+        res.status(201).json(topics);
+
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred fetching the topics', error: error.message });
+    }
 
 }
