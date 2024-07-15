@@ -59,3 +59,26 @@ export const getAllSurveys = async(req, res) => {
         res.status(500).json({ message: 'An error occurred created the surveys', error: error.message });
     }
 }
+
+export const getSurveyByUser = async (req,res) =>{
+
+    const {userId}=req.body
+
+    try {
+        const surveys = await Survey.find({user:userId})
+        .populate('topic')
+        .populate({
+            path:'question',
+            populate:{path: 'answer'}
+        })
+
+        if (!surveys.length) {
+            return res.status(404).json({ message: 'No surveys found for this user' });
+        }
+
+        res.status(201).json(surveys);
+
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred fetching the surveys', error: error.message });
+    }
+}
