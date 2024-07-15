@@ -6,6 +6,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowvite.content()
   ],
   theme: {
     extend: {
@@ -18,7 +19,6 @@ export default {
     },
   },
   plugins: [
-    flowvite.plugin('flowbite/plugin'),
-    // require('flowbite/plugin')
+    flowvite.plugin()
   ],
 }

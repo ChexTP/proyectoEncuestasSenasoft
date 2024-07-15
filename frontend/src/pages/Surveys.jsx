@@ -19,7 +19,7 @@ const Surveys = () => {
     const [surveys, setSurveys] = useState([]);
 
     const { surveysModalState, setSurveysModalState } = useContext(SurveysContext);
-    console.log(surveysModalState);
+
 
     useEffect(() => {
         
@@ -46,7 +46,7 @@ const Surveys = () => {
                             background="bg-green-500"
                             textColor="text-white"
                             onclick={() => setSurveysModalState(true)}
-                            />
+                        />
                     </div>
                     {
                         surveysModalState && <SurveysForm />

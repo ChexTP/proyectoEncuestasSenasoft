@@ -26,7 +26,7 @@ const SurveysTable = ({surveys}) => {
                                     <img className="w-10 h-10" src={`${import.meta.env.VITE_UPLOAD_IMAGES_URL}/${survey.image}`} alt="" />
                                 </div>
                             </td>
-                            <td className="border p-2">{survey.topic}</td>
+                            <td className="border p-2">{survey.topic?.map(topic => topic.topicTitle)}</td>
                             <td className="border p-2">{survey.title}</td>
                             <td className="border p-2">{survey.description}</td>
                             <td className="border p-2 text-center">{getDate(survey.startDate)}</td>
