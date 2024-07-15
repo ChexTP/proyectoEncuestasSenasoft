@@ -7,7 +7,7 @@ import {rolRequired} from '../middlewares/validateRol.js'
 const router = Router();
 
 router.post('/addSurvey',upload.single('image'), addSurvey);
-router.get('/surveys', getAllSurveys);
-router.get('/surveysById', getSurveyByUser);
+router.get('/surveys',authRequired,rolRequired("admin"), getAllSurveys);
+router.get('/surveysById',authRequired,rolRequired("admin"), getSurveyByUser);
 
 export default router;
