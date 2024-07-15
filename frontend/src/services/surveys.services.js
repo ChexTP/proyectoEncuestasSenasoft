@@ -3,8 +3,8 @@ import axios from "./axios";
 export const getAllSurveys = async() => {
     try {
 
-        const res = await axios.get("/");
-        return res;
+        const surveys = await axios.get("/survey/surveys");
+        return surveys;
 
     } catch (error) {
         console.log(error);

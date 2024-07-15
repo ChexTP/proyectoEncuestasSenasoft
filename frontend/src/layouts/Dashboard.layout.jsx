@@ -12,7 +12,7 @@ const DashboardLayout = ({children}) => {
                 <DashboardNavBar/>
                 <div className="flex h-[80vh]">
                     <Sidebar/>
-                    <main className="p-10">
+                    <main className="p-10 w-full">
                         { children }
                     </main>
                 </div>
