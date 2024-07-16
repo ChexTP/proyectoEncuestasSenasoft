@@ -45,8 +45,8 @@ const Sidebar = () => {
                         ))
                     }
                     <li onClick={handleLogout}>
-                        <div className="group cursor-pointer flex items-center transition-all p-2 rounded-lg text-gray-500 hover:bg-red-500">
-                            <FontAwesomeIcon className='text-gray-500 text-xl group-hover:text-white' icon={faRightFromBracket}/>
+                        <div className="group cursor-pointer flex items-center transition-all p-2 rounded-lg text-white bg-red-500">
+                            <FontAwesomeIcon className='text-white text-xl' icon={faRightFromBracket}/>
                             <span className="ms-3 text-xl group-hover:text-white">Cerrar Sesión</span>
                         </div>
                     </li>

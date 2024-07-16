@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import surveyModel from './survey.model'
+// import surveyModel from './survey.model.js'
 
 const topicSchema = new mongoose.Schema({
 

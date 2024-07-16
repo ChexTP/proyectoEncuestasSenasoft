@@ -11,6 +11,7 @@ const Surveys = lazy(()=> import("../pages/Surveys.jsx"));
 const Topics = lazy(()=> import("../pages/Topics.jsx"));
 
 import SurveysContextProvider from "../context/Surveys.context.jsx";
+import TopicsContextProvider from "../context/Topics.context.jsx";
 
 const AllRoutes = () => {
     return (
@@ -23,7 +24,11 @@ const AllRoutes = () => {
                             <Surveys/>
                         </SurveysContextProvider>
                     }/>
-                    <Route path="/topics" element={<Topics/>}/>
+                    <Route path="/topics" element={
+                        <TopicsContextProvider>
+                            <Topics/>
+                        </TopicsContextProvider>
+                    }/>
                 </Route>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>

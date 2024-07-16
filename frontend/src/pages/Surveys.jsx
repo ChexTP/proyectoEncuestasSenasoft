@@ -9,31 +9,12 @@ const SurveysForm = lazy(() => import("../components/SurveysForm.jsx"));
 
 import { SurveysContext } from "../context/Surveys.context.jsx";
 
-// services
-import { getAllSurveys } from "../services/surveys.services.js";
 
 const Surveys = () => {
 
     document.title = "Encuestas - Encuestas Senasoft";
 
-    const [surveys, setSurveys] = useState([]);
-
-    const { surveysModalState, setSurveysModalState } = useContext(SurveysContext);
-
-
-    useEffect(() => {
-        
-        const getSurveysSerice = async() => {
-            try {
-                const allSurvies = await getAllSurveys();
-                setSurveys(allSurvies.data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getSurveysSerice();
-
-    }, []);
+    const { surveysModalState, setSurveysModalState, surveys } = useContext(SurveysContext);
 
     return (
         <Suspense fallback={<Loader/>}>

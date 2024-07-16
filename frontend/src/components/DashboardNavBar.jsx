@@ -15,8 +15,8 @@ const DashboardNavBar = () => {
     const fullName = `${user.firstName} ${user.lastName}`;
 
     return (
-        <nav className="h-[11.5vh] z-50 w-full border-b border-gray-700 bg-gray-800 ">
-            <div className="px-3 py-3 lg:px-5 lg:pl-3">
+        <nav className="h-[11.5vh] flex items-center justify-between z-50 w-full border-b border-gray-700 bg-gray-800 ">
+            <div className="w-full px-3 py-3 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                 <div className="flex items-center justify-start rtl:justify-end">
                     <Link to="/" className="flex">

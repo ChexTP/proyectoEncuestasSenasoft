@@ -1,38 +1,55 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer  } from "react-toastify";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FileInput } from "flowbite-react";
 
 import { SurveysContext } from "../context/Surveys.context.jsx";
+import { addSurvey } from "../services/surveys.services.js";
 
 import Button from "./Button.jsx";
+import Loader from "./Loader/Loader.jsx";
 
 const SurveysForm = () => {
 
-    const { setSurveysModalState } = useContext(SurveysContext);
+    const { setSurveysModalState, setSurveys, surveys, setSurveyLoading, surveyLoading } = useContext(SurveysContext);
 
     const { handleSubmit, register, formState:{ errors } } = useForm();
 
+    // agregar encuesta
     const handleAddSurvey = handleSubmit(async(data) => {
+
         data.startDate = new Date(data.startDate);
         data.finishDate = new Date(data.finishDate);
         data.age = parseInt(data.age);
+        data.image = data.image[0];
 
-        console.log(data);
+        try {
+            const surveyCreated = await addSurvey(data);
+            setSurveys([...surveys, surveyCreated.data.survey]);
+            setSurveysModalState(false);
+            setSurveyLoading(false);
+
+        } catch (error) {
+            toast.error("Error al subir la encuesta");
+            console.log(error);
+            setSurveyLoading(false);
+        }
     })
 
     return (
-
         <div className="w-screen h-screen bg-[#000000b3] backdrop-blur-sm absolute top-0 left-0 z-50 flex justify-center items-center overflow-hidden">
-            <div className="bg-gray-700 relative w-[700px] h-[90vh] overflow-y-scroll py-12 px-8 rounded-lg">
+            <ToastContainer/>
+            { surveyLoading && <Loader/> }
+            <div className="bg-gray-700 relative w-full max-w-[550px] h-[90vh] py-12 px-8 rounded-lg">
                 <FontAwesomeIcon
                     onClick={() => setSurveysModalState(false)}
                     className="absolute top-5 right-5 cursor-pointer text-xl text-red-500"
                     icon={faCircleXmark}
                 />
-                <form className="space-y-4" onSubmit={handleAddSurvey}>
+                <form className="space-y-4 h-full overflow-y-scroll custom-scroll pr-3" onSubmit={handleAddSurvey}>
                     <h3 className="text-xl font-semibold">Agrega una encuesta</h3>
                     {/* titulo */}
                     <div>
@@ -130,9 +147,6 @@ const SurveysForm = () => {
                         />
                         { errors.image && <span className="text-red-600 mt-2 block">{errors.image.message}</span> }
                     </div>
-                    
-                    
-
 
                     <div className="mt-4">
                         <Button

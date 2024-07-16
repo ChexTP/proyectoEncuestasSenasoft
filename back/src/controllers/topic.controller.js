@@ -7,7 +7,7 @@ export const addTopic = async (req,res)=>{
     //recibir id de la encuesta a asociar el tema y el tema a asociar
     const {
         topicTitle,
-        idSurvey=[]
+        idSurvey
     } = req.body
 
     try {
@@ -34,7 +34,6 @@ export const addTopic = async (req,res)=>{
         
     }
 
-
 }
 
 export const getTopicBySurvey = async (req,res)=>{
@@ -55,4 +54,14 @@ export const getTopicBySurvey = async (req,res)=>{
         res.status(500).json({ message: 'An error occurred fetching the topics', error: error.message });
     }
 
+}
+
+export const getAllTopics = async(req, res) => {
+    try {
+        const topics = await Topic.find({});
+        res.status(201).json(topics);
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred fetching the topics', error: error.message });
+        
+    }
 }

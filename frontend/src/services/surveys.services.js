@@ -13,7 +13,11 @@ export const getAllSurveys = async() => {
 
 export const addSurvey = async(survey) => {
     try {
-        const surveyRes = await axios.post();
+        const surveyRes = await axios.post("/survey/addSurvey", survey, {
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            }
+        });
         return surveyRes;
     } catch (error) {
         console.log(error);
