@@ -29,3 +29,17 @@ export const logout = async() => {
         return error;
     }
 }
+
+export const registerService = async(data) => {
+
+    try {
+        
+        const register = await axios.post("/register", data);
+        return register;
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+
+}

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/Auth.context.jsx";
 
@@ -72,7 +73,7 @@ const FormLogin = () => {
                 </div>
                 <button type="submit" className="w-full text-white transition-all bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ingresar a tu cuenta</button>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    <p>¿No estás registrado? <a href="#" className="text-gray-900 hover:underline dark:text-blue-500">Crea una cuenta</a></p>
+                    <p>¿No estás registrado? <Link to="/register" className="text-gray-900 hover:underline dark:text-blue-500">Crea una cuenta</Link></p>
                 </div>
             </form>
         </div>

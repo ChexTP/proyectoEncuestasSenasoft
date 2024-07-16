@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify"
+import { Link, useNavigate } from 'react-router-dom';
+
+import { registerService } from '../services/auth.services.js';
 
 const FormRegister = () => {
+
+    const navigate = useNavigate();
 
     // mostrado la opcion de seleccionar los dispositivos
     const [isDevice, setIsDevice] = useState(false);
@@ -15,7 +19,7 @@ const FormRegister = () => {
     // configuracion del formulario
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const handleRegister = handleSubmit((data) => {
+    const handleRegister = handleSubmit(async(data) => {
 
         const { mobilePhone, phone, birthDate, socioeconomicStratum, deviceAcces, connectivityInternet } = data;
 
@@ -32,6 +36,16 @@ const FormRegister = () => {
         data.deviceAcces = Boolean(deviceAccesNumber);
         const connectivityInternetNumber = parseInt(connectivityInternet);
         data.connectivityInternet = Boolean(connectivityInternetNumber);
+
+        try {
+            const userRegistered = await registerService(data);
+            console.log(userRegistered);
+            navigate("/login");
+
+        } catch (error) {
+            console.log(error);
+            toast.error("Error al registrarte, intentalo nuevamente!");
+        }
         
         console.log(data);
     })
@@ -388,7 +402,7 @@ const FormRegister = () => {
 
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300 flex flex-col gap-4">
                     <button type="submit" className="w-full block text-white transition-all bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Resgistrarme</button>
-                    <p>¿Ya tienes una cuenta? <a href="#" className="text-gray-900 hover:underline dark:text-blue-500">Ingresa a mi cuenta</a></p>
+                    <p>¿Ya tienes una cuenta? <Link to="/login" className="text-gray-900 hover:underline">Ingresa a mi cuenta</Link></p>
                 </div>
             </form>
         </div>
